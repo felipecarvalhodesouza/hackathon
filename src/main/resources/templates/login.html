@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Sistema de marcação de consultas</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/styles.css}">
+</head>
+<body>
+    <div class="container">
+        <h1>Login</h1>
+        <form th:action="@{/login}" method="post">
+            <div th:if="${param.error}" class="error-message">
+                Usuário ou senha inválidos
+            </div>
+            <div th:if="${param.logout}" class="logout-message">
+                Sessão encerrada
+            </div>
+            <label for="username">Email:</label>
+            <input type="text" id="username" name="username" required><br>
+            <label for="password">Senha:</label>
+            <input type="password" id="password" name="password" required><br>
+            <input type="submit" value="Login">
+        </form>
+        <p class="not-registered">Not registered? <a th:href="@{/register}" class="btn btn-primary btn-sm mb-3"> Cadastre-se </a></p>
+    </div>
+</body>
+</html>
