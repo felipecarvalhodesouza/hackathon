@@ -7,4 +7,5 @@ import br.com.fiap.hackathon.domain.Usuario;
 public interface UsuarioRepositoryPort {
 
 	Optional<Usuario> findByEmail(String email);
+	Usuario cadastrarUsuario(Usuario usuario);
 }

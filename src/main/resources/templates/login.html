@@ -20,7 +20,33 @@
             <input type="password" id="password" name="password" required><br>
             <input type="submit" value="Login">
         </form>
-        <p class="not-registered">Not registered? <a th:href="@{/register}" class="btn btn-primary btn-sm mb-3"> Cadastre-se </a></p>
+        <p class="not-registered">Not registered? <a th:href="@{/cadastro}" class="btn btn-primary btn-sm mb-3"> Cadastre-se </a></p>
     </div>
+	    <div id="alertModal" class="modal" th:if="${mensagem}">
+        <div class="modal-content">
+            <span class="close-button" onclick="fecharModal()">&times;</span>
+            <p th:text="${mensagem}"></p>
+        </div>
+    </div>
+
+    <script>
+        window.onload = function() {
+            const modal = document.getElementById('alertModal');
+            if (modal) {
+                modal.style.display = 'block'; // Exibe o modal se ele existir
+            }
+        };
+
+        function fecharModal() {
+            document.getElementById('alertModal').style.display = 'none';
+        }
+
+        window.onclick = function(event) {
+            const modal = document.getElementById('alertModal');
+            if (event.target == modal) {
+                modal.style.display = 'none';
+            }
+        };
+    </script>
 </body>
 </html>

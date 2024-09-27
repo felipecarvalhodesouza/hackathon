@@ -28,4 +28,9 @@ public class UsuarioRepository implements UsuarioRepositoryPort{
 		return Optional.ofNullable(usuario);
 	}
 
+	public Usuario cadastrarUsuario(Usuario usuario) {
+		UsuarioEntity usuarioPersistido = jpaUsuarioRepository.save(UsuarioMapper.toEntity(usuario));
+		return UsuarioMapper.toDomain(usuarioPersistido);
+	}
+
 }

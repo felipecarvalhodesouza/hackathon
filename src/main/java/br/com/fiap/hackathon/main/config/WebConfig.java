@@ -23,7 +23,7 @@ public class WebConfig {
 							.hasAuthority("MEDICO")
 						.requestMatchers("/home")
 							.hasAuthority("PACIENTE")
-							.requestMatchers("/register", "/add", "/register/admin", "/add/admin", "/login", "/error", "/css/**")
+							.requestMatchers("/cadastro", "/cadastro/paciente", "/cadastro/medico", "/login", "/error", "/css/**", "/js/**")
 							.permitAll()
 						
 						.anyRequest().authenticated();
