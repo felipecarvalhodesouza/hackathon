@@ -2,6 +2,8 @@ package br.com.fiap.hackathon.main.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.crypto.factory.PasswordEncoderFactories;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import br.com.fiap.hackathon.adapters.out.repository.JpaUsuarioRepository;
 import br.com.fiap.hackathon.adapters.out.repository.UsuarioRepository;
@@ -17,7 +19,12 @@ public class UsuarioConfig {
 	}
 	
 	@Bean
-	CadastrarPacienteUseCase createCadastrarPacienteUseCase(UsuarioRepositoryPort repository) {
-		return new CadastrarPacienteUseCase(repository);
+	CadastrarPacienteUseCase createCadastrarPacienteUseCase(UsuarioRepositoryPort repository, PasswordEncoder passwordEncoder) {
+		return new CadastrarPacienteUseCase(repository, passwordEncoder);
+	}
+	
+	@Bean
+	PasswordEncoder createPasswordEncoder() {
+		return PasswordEncoderFactories.createDelegatingPasswordEncoder();
 	}
 }
