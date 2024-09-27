@@ -32,5 +32,4 @@ public class UsuarioRepository implements UsuarioRepositoryPort{
 		UsuarioEntity usuarioPersistido = jpaUsuarioRepository.save(UsuarioMapper.toEntity(usuario));
 		return UsuarioMapper.toDomain(usuarioPersistido);
 	}
-
 }
