@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+
+<h1>Index page access by users</h1>
+
+<div sec:authorize='hasAuthority("MEDICO")'>This content is only shown
+   to MEDICOS.</div>
+
+<div sec:authorize='hasAuthority("PACIENTE")'>This content is only shown
+   to PACIENTES.</div>
+</body>
+</html>

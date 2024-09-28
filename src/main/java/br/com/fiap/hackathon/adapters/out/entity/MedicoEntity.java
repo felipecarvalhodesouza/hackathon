@@ -1,5 +1,9 @@
 package br.com.fiap.hackathon.adapters.out.entity;
 
+import java.util.Arrays;
+import java.util.List;
+
+import br.com.fiap.hackathon.domain.Role;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
@@ -20,4 +24,10 @@ public class MedicoEntity extends UsuarioEntity {
 	public void setCrm(String crm) {
 		this.crm = crm;
 	}
+	
+	@Override
+	public List<Role> getRoles() {
+		return Arrays.asList(Role.MEDICO);
+	}
+
 }
