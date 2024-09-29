@@ -1,5 +1,9 @@
 package br.com.fiap.hackathon.adapters.out.repository;
 
+import java.time.LocalDate;
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import br.com.fiap.hackathon.adapters.out.entity.ConsultaEntity;
@@ -26,6 +30,11 @@ public class ConsultaRepository implements ConsultaRepositoryPort{
 			throw new HorarioIndisponivelException("Horário não está mais disponível para atendimento");
 		}
 		
+	}
+
+	@Override
+	public List<Consulta> buscarTodasConsultasPorMedicoEDia(LocalDate dia, Long medicoId) {
+		return jpaConsultaRepository.findAllByDiaAndMedico(dia, medicoId).stream().map(ConsultaMapper::toDomain).collect(Collectors.toList());
 	}
 
 }

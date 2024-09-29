@@ -75,8 +75,8 @@ public class BeanConfig {
 	}
 	
 	@Bean
-	BuscarHorariosDisponiveisUseCase createBuscarHorariosDisponiveisUseCase(MedicoRepositoryPort repository) {
-		return new BuscarHorariosDisponiveisUseCase(repository);
+	BuscarHorariosDisponiveisUseCase createBuscarHorariosDisponiveisUseCase(MedicoRepositoryPort repository, ConsultaRepositoryPort consultaRepository) {
+		return new BuscarHorariosDisponiveisUseCase(repository, consultaRepository);
 	}
 	
 	@Bean
