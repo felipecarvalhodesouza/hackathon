@@ -198,3 +198,25 @@ input[type="submit"].agenda-button {
 input[type="submit"].agenda-button:hover {
     background-color: #218838;
 }
+
+table {
+    width: 100%; /* Faz a tabela ocupar toda a largura disponível */
+    border-collapse: collapse; /* Remove espaços entre as células */
+}
+
+th {
+    background-color: #007bff; /* Cor de fundo azul para os cabeçalhos */
+    color: white; /* Cor do texto em branco */
+    padding: 10px; /* Espaçamento interno nas células */
+    text-align: left; /* Alinha o texto à esquerda */
+    font-weight: bold; /* Negrito para os títulos */
+}
+
+td {
+    padding: 10px; /* Espaçamento interno nas células de dados */
+    border-bottom: 1px solid #ddd; /* Borda inferior leve */
+}
+
+tr:hover {
+    background-color: #f1f1f1; /* Cor de fundo ao passar o mouse */
+}

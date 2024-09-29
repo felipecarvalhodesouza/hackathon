@@ -13,5 +13,8 @@ public interface JpaConsultaRepository extends JpaRepository<ConsultaEntity, Lon
 
 	@Query("SELECT c FROM ConsultaEntity c WHERE c.dia = :dia AND c.medico.id = :medicoId")
 	List<ConsultaEntity> findAllByDiaAndMedico(@Param("dia") LocalDate dia, @Param("medicoId") Long medicoId);
+	
+	@Query("SELECT c FROM ConsultaEntity c WHERE c.paciente.id = :pacienteId")
+	List<ConsultaEntity> findAllByPacienteId(@Param("pacienteId") Long pacienteId);
 
 }

@@ -23,6 +23,7 @@ import br.com.fiap.hackathon.application.usecases.BuscarAgendaUseCase;
 import br.com.fiap.hackathon.application.usecases.BuscarHorariosAtendimentoUseCase;
 import br.com.fiap.hackathon.application.usecases.BuscarHorariosDisponiveisUseCase;
 import br.com.fiap.hackathon.application.usecases.BuscarMedicosDisponiveisUseCase;
+import br.com.fiap.hackathon.application.usecases.BuscarMinhasConsultasAgendadasUseCase;
 import br.com.fiap.hackathon.application.usecases.CadastrarConsultaUseCase;
 import br.com.fiap.hackathon.application.usecases.CadastrarMedicoUseCase;
 import br.com.fiap.hackathon.application.usecases.CadastrarPacienteUseCase;
@@ -36,8 +37,8 @@ public class BeanConfig {
 	}
 	
 	@Bean	
-	ConsultaRepositoryPort createConsultaRepositoryPort(JpaConsultaRepository jpaConsultaRepository, EnvioNotificacaoGateway gateway) {
-		return new ConsultaRepository(jpaConsultaRepository, gateway);
+	ConsultaRepositoryPort createConsultaRepositoryPort(JpaConsultaRepository jpaConsultaRepository, EnvioNotificacaoGateway gateway, UsuarioRepositoryPort usuarioRepository) {
+		return new ConsultaRepository(jpaConsultaRepository, gateway, usuarioRepository);
 	}
 
 	@Bean
@@ -88,6 +89,11 @@ public class BeanConfig {
 	@Bean
 	CadastrarConsultaUseCase createCadastrarConsultaUseCase(ConsultaRepositoryPort repository, UsuarioRepositoryPort usuarioRepository, MedicoRepositoryPort medicoRepository) {
 		return new CadastrarConsultaUseCase(repository, usuarioRepository, medicoRepository);
+	}
+	
+	@Bean
+	BuscarMinhasConsultasAgendadasUseCase createBuscarMinhasConsultasAgendadasUseCase(ConsultaRepositoryPort repository) {
+		return new BuscarMinhasConsultasAgendadasUseCase(repository);
 	}
 
 	@Bean

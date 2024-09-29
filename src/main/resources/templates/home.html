@@ -11,6 +11,7 @@
 				<thead>
 					<tr>
 						<th>Horário</th>
+						<th>Paciente</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -23,7 +24,24 @@
 		</div>
 
 		<div sec:authorize="hasAuthority('PACIENTE')">
-            Este conteúdo é apenas para PACIENTES.
+			<h1>Minhas consultas agendadas</h1>
+
+			<table>
+				<thead>
+					<tr>
+						<th>Data</th>
+						<th>Horário</th>
+						<th>Médico</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="consulta : ${minhasConsultas}">
+						<td th:text="${consulta.data}">01/01/1900</td>
+						<td th:text="${consulta.horario}">08:00</td>
+						<td th:text="${consulta.descricao}">Dr. Freud</td>
+					</tr>
+				</tbody>
+			</table>
         </div>
 
 		<div id="alertModal" class="modal" th:if="${mensagem}">
