@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import br.com.fiap.hackathon.application.usecases.AtualizarAgendaUseCase;
 import br.com.fiap.hackathon.application.usecases.BuscarAgendaUseCase;
-import br.com.fiap.hackathon.application.usecases.ObterHorariosAtendimentoUseCase;
+import br.com.fiap.hackathon.application.usecases.BuscarHorariosAtendimentoUseCase;
 import br.com.fiap.hackathon.domain.Agenda;
 
 @Controller
@@ -20,13 +20,13 @@ public class MedicoController {
 	
     private final AtualizarAgendaUseCase atualizarAgendaUseCase;
     private final BuscarAgendaUseCase buscarAgendaUseCase;
-    private final ObterHorariosAtendimentoUseCase obterHorariosAtendimentoUseCase;
+    private final BuscarHorariosAtendimentoUseCase buscarHorariosAtendimentoUseCase;
     
     @Autowired
-    public MedicoController(AtualizarAgendaUseCase atualizarAgendaUseCase, BuscarAgendaUseCase buscarAgendaUseCase, ObterHorariosAtendimentoUseCase obterHorariosAtendimentoUseCase) {
+    public MedicoController(AtualizarAgendaUseCase atualizarAgendaUseCase, BuscarAgendaUseCase buscarAgendaUseCase, BuscarHorariosAtendimentoUseCase obterHorariosAtendimentoUseCase) {
         this.atualizarAgendaUseCase = atualizarAgendaUseCase;
         this.buscarAgendaUseCase = buscarAgendaUseCase;
-        this.obterHorariosAtendimentoUseCase = obterHorariosAtendimentoUseCase;
+        this.buscarHorariosAtendimentoUseCase = obterHorariosAtendimentoUseCase;
     }
 	
 	@GetMapping("/configurarAgenda")
@@ -40,7 +40,7 @@ public class MedicoController {
 	public String cadastrarAgendaMedico(@ModelAttribute Agenda agenda, Authentication authentication, Model model) {
 		model.addAttribute("usuario", authentication.getName());
 		atualizarAgendaUseCase.executar(agenda, authentication.getName());
-		model.addAttribute("horariosAtendimento", obterHorariosAtendimentoUseCase.obterHorariosAtendimento(authentication.getName(), LocalDate.now()));
+		model.addAttribute("horariosAtendimento", buscarHorariosAtendimentoUseCase.executar(authentication.getName(), LocalDate.now()));
 		return "home";
 	}
 }

@@ -17,6 +17,12 @@
                             <input type="submit" value="Configurar Agenda" class="agenda-button"/>
                         </form>
                     </div>
+                    
+                    <div sec:authorize="hasAuthority('PACIENTE')">
+                        <form th:action="@{/marcarConsulta}" method="get">
+                            <input type="submit" value="Marcar Consulta" class="marcar-consulta-button"/>
+                        </form>
+                    </div>
 
                     <form th:action="@{/logout}" method="post">
                         <input type="submit" value="Logout" class="logout-button" />

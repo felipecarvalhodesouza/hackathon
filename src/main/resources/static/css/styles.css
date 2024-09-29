@@ -145,7 +145,7 @@ header h1 {
 }
 
 /* Ajusta o padding dos botões */
-.agenda-button, .logout-button {
+.agenda-button, .logout-button, .marcar-consulta-button {
     padding: 10px 15px; /* Ajuste do padding */
     display: flex;
     align-items: center; /* Alinha o conteúdo interno dos botões */

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Marcar Consulta</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/styles.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/marcarConsulta.css}">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="/js/marcarConsulta.js" defer></script> <!-- Referência ao arquivo JS externo -->
+</head>
+<body>
+
+    <header th:replace="fragments/header :: header"></header>
+
+    <main>
+        <h1>Marcar Consulta</h1>
+        
+        <!-- Formulário para enviar os dados -->
+        <form th:action="@{/marcarConsulta}" method="post">
+        
+            <div>
+                <label for="medicoSelect">Selecione um médico:</label>
+                <select id="medicoSelect" name="medico" required>
+                    <option value="">-- Selecione um médico --</option>
+                    <option th:each="medico : ${medicos}" th:value="${medico.id}" th:text="${medico.nome}"></option>
+                </select>
+            </div>
+
+            <div id="horariosDisponiveis" style="display:none;">
+                <label for="horarioSelect">Horários Disponíveis:</label>
+                <select id="horarioSelect" name="horario" required>
+                    <option value="">-- Selecione um horário --</option>
+                </select>
+            </div>
+
+            <!-- Botão de submit -->
+            <div>
+                <button type="submit" class="agenda-button">Marcar Consulta</button>
+            </div>
+
+        </form>
+    </main>
+
+</body>
+</html>

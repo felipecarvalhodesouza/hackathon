@@ -7,6 +7,7 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -61,8 +62,13 @@ public class MedicoRepository implements MedicoRepositoryPort {
 	}
 
 	@Override
-	public List<LocalTime> obterHorariosAtendimento(String emailUsuario, LocalDate data) {
+	public List<LocalTime> buscarHorariosAtendimento(String emailUsuario, LocalDate data) {
 		MedicoEntity medico = jpaMedicoRepository.findByEmail(emailUsuario);
+		
+		if(medico == null) {
+			return null;
+		}
+		
 		DiaSemana diaSemana = DiaSemana.from(data.getDayOfWeek());
 		PeriodoTrabalho periodoTrabalho = OrdenadorAgenda.getAgendaOrdenada(medico.getAgenda().getDiasComPeriodos()).get(diaSemana);
 
@@ -83,6 +89,18 @@ public class MedicoRepository implements MedicoRepositoryPort {
 		}
 
 		return horarios;
+	}
+
+	@Override
+	public List<LocalTime> buscarHorariosDisponiveis(Long medicoId, LocalDate data) {
+		MedicoEntity medicoEntity = jpaMedicoRepository.findById(medicoId).orElseThrow(() -> new RuntimeException("Médico não encontrado"));
+		return buscarHorariosAtendimento(medicoEntity.getEmail(), data);
+	}
+
+	@Override
+	public List<Medico> buscarMedicosDisponiveis(LocalDate data) {
+        DiaSemana diaSemanaAtual = DiaSemana.from(data.getDayOfWeek());
+        return jpaMedicoRepository.findMedicosComAtendimentoNoDia(diaSemanaAtual).stream().map(MedicoMapper::toDomain).collect(Collectors.toList());
 	}
 
 }

@@ -8,15 +8,15 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import br.com.fiap.hackathon.application.usecases.ObterHorariosAtendimentoUseCase;
+import br.com.fiap.hackathon.application.usecases.BuscarHorariosAtendimentoUseCase;
 
 @Controller
 public class LoginController {
 	
-    private final ObterHorariosAtendimentoUseCase obterHorariosAtendimentoUseCase;
+    private final BuscarHorariosAtendimentoUseCase obterHorariosAtendimentoUseCase;
 
     @Autowired
-    public LoginController(ObterHorariosAtendimentoUseCase obterHorariosAtendimentoUseCase) {
+    public LoginController(BuscarHorariosAtendimentoUseCase obterHorariosAtendimentoUseCase) {
         this.obterHorariosAtendimentoUseCase = obterHorariosAtendimentoUseCase;
     }
 
@@ -28,7 +28,7 @@ public class LoginController {
 	@GetMapping("/")
 	public String home(Authentication authentication, Model model) {
 		model.addAttribute("usuario", authentication.getName());
-        model.addAttribute("horariosAtendimento", obterHorariosAtendimentoUseCase.obterHorariosAtendimento(authentication.getName(), LocalDate.now()));
+        model.addAttribute("horariosAtendimento", obterHorariosAtendimentoUseCase.executar(authentication.getName(), LocalDate.now()));
 		return "home";
 	}
 }

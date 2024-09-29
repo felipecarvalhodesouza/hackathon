@@ -6,16 +6,16 @@ import java.util.List;
 
 import br.com.fiap.hackathon.application.ports.out.MedicoRepositoryPort;
 
-public class ObterHorariosAtendimentoUseCase {
+public class BuscarHorariosAtendimentoUseCase {
 	
 	private final MedicoRepositoryPort repository;
 	
-	public ObterHorariosAtendimentoUseCase(MedicoRepositoryPort repository) {
+	public BuscarHorariosAtendimentoUseCase(MedicoRepositoryPort repository) {
 		this.repository = repository;
 	}
 
-	public List<LocalTime> obterHorariosAtendimento(String nomeUsuario, LocalDate data){
-		return repository.obterHorariosAtendimento(nomeUsuario, data);
+	public List<LocalTime> executar(String nomeUsuario, LocalDate data){
+		return repository.buscarHorariosAtendimento(nomeUsuario, data);
 	}
 
 }

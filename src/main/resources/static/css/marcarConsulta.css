@@ -1,0 +1,43 @@
+/* Estilização do select para deixar mais elegante */
+select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    font-size: 16px;
+    cursor: pointer;
+}
+
+/* Estilo para o select quando está aberto */
+select:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+/* Estilo para o label */
+label {
+    font-weight: bold;
+    margin-bottom: 10px;
+    display: block;
+}
+
+/* Ajuste para o container dos horários */
+#horariosDisponiveis {
+    margin-top: 20px;
+}
+
+input[type="submit"].agenda-button {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+input[type="submit"].agenda-button:hover {
+    background-color: #218838;
+}

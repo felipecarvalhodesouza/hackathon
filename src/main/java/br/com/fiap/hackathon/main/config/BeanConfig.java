@@ -16,12 +16,14 @@ import br.com.fiap.hackathon.application.ports.out.MedicoRepositoryPort;
 import br.com.fiap.hackathon.application.ports.out.UsuarioRepositoryPort;
 import br.com.fiap.hackathon.application.usecases.AtualizarAgendaUseCase;
 import br.com.fiap.hackathon.application.usecases.BuscarAgendaUseCase;
+import br.com.fiap.hackathon.application.usecases.BuscarHorariosAtendimentoUseCase;
+import br.com.fiap.hackathon.application.usecases.BuscarHorariosDisponiveisUseCase;
+import br.com.fiap.hackathon.application.usecases.BuscarMedicosDisponiveisUseCase;
 import br.com.fiap.hackathon.application.usecases.CadastrarMedicoUseCase;
 import br.com.fiap.hackathon.application.usecases.CadastrarPacienteUseCase;
-import br.com.fiap.hackathon.application.usecases.ObterHorariosAtendimentoUseCase;
 
 @Configuration
-public class UsuarioConfig {
+public class BeanConfig {
 
 	@Bean
 	UsuarioRepositoryPort createUsuarioRepositoryPort(JpaUsuarioRepository jpaUsuarioRepository) {
@@ -49,8 +51,8 @@ public class UsuarioConfig {
 	}
 	
 	@Bean
-	ObterHorariosAtendimentoUseCase createObterHorariosAtendimentoUseCase(MedicoRepositoryPort repository) {
-		return new ObterHorariosAtendimentoUseCase(repository);
+	BuscarHorariosAtendimentoUseCase createObterHorariosAtendimentoUseCase(MedicoRepositoryPort repository) {
+		return new BuscarHorariosAtendimentoUseCase(repository);
 	}
 	
 	@Bean
@@ -63,6 +65,15 @@ public class UsuarioConfig {
 		return new BuscarAgendaUseCase(repository);
 	}
 	
+	@Bean
+	BuscarHorariosDisponiveisUseCase createBuscarHorariosDisponiveisUseCase(MedicoRepositoryPort repository) {
+		return new BuscarHorariosDisponiveisUseCase(repository);
+	}
+	
+	@Bean
+	BuscarMedicosDisponiveisUseCase createBuscarMedicosDisponiveisUseCase(MedicoRepositoryPort repository) {
+		return new BuscarMedicosDisponiveisUseCase(repository);
+	}
 
 	@Bean
 	PasswordEncoder createPasswordEncoder() {

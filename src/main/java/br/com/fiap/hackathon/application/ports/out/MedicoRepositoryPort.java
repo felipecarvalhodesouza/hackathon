@@ -11,5 +11,7 @@ public interface MedicoRepositoryPort {
 
 	Optional<Medico> findByEmail(String email);
 	Medico cadastrarMedico(Medico medico);
-	List<LocalTime> obterHorariosAtendimento(String nomeUsuario, LocalDate data);
+	List<LocalTime> buscarHorariosAtendimento(String nomeUsuario, LocalDate data);
+	List<LocalTime> buscarHorariosDisponiveis(Long medicoId, LocalDate data);
+	List<Medico> buscarMedicosDisponiveis(LocalDate data);
 }
