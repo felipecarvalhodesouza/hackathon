@@ -1,5 +1,6 @@
 package br.com.fiap.hackathon.main.utils;
 
+import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
@@ -7,6 +8,7 @@ import java.util.stream.Collectors;
 
 public class ConversorLocalDate {
 	private static final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
+	private static final DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
 	public static String getHoraFormatada(LocalTime data) {
         return data.format(formatter);
@@ -18,5 +20,9 @@ public class ConversorLocalDate {
 	
 	public static List<String> getHoraFormatada(List<LocalTime> datas) {
         return datas.stream().map(ConversorLocalDate::getHoraFormatada).collect(Collectors.toList());
+	}
+
+	public static String getDataFormatada(LocalDate data) {
+		return data.format(dateFormatter);
 	}
 }

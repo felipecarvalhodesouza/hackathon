@@ -36,7 +36,7 @@
 				</thead>
 				<tbody>
 					<tr th:each="consulta : ${minhasConsultas}">
-						<td th:text="${consulta.data}">01/01/1900</td>
+						<td th:text="${T(br.com.fiap.hackathon.main.utils.ConversorLocalDate).getDataFormatada(consulta.data)}">01/01/1900</td>
 						<td th:text="${consulta.horario}">08:00</td>
 						<td th:text="${consulta.descricao}">Dr. Freud</td>
 					</tr>
