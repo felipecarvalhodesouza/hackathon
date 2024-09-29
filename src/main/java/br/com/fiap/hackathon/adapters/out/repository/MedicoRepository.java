@@ -14,7 +14,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import br.com.fiap.hackathon.adapters.out.entity.AgendaEntity;
 import br.com.fiap.hackathon.adapters.out.entity.MedicoEntity;
 import br.com.fiap.hackathon.adapters.out.mapper.MedicoMapper;
+import br.com.fiap.hackathon.application.ports.out.ConsultaRepositoryPort;
 import br.com.fiap.hackathon.application.ports.out.MedicoRepositoryPort;
+import br.com.fiap.hackathon.domain.Consulta;
+import br.com.fiap.hackathon.domain.GradeAtendimento;
 import br.com.fiap.hackathon.domain.Medico;
 import br.com.fiap.hackathon.domain.enums.DiaSemana;
 import br.com.fiap.hackathon.domain.enums.PeriodoTrabalho;
@@ -23,10 +26,12 @@ import br.com.fiap.hackathon.main.utils.OrdenadorAgenda;
 public class MedicoRepository implements MedicoRepositoryPort {
 
 	private final JpaMedicoRepository jpaMedicoRepository;
+	private final ConsultaRepositoryPort consultaRepository;
 
 	@Autowired
-	public MedicoRepository(JpaMedicoRepository jpaMedicoRepository) {
+	public MedicoRepository(JpaMedicoRepository jpaMedicoRepository, ConsultaRepositoryPort consultaRepository) {
 		this.jpaMedicoRepository = jpaMedicoRepository;
+		this.consultaRepository = consultaRepository;
 	}
 
 	@Override
@@ -62,7 +67,7 @@ public class MedicoRepository implements MedicoRepositoryPort {
 	}
 
 	@Override
-	public List<LocalTime> buscarHorariosAtendimento(String emailUsuario, LocalDate data) {
+	public List<GradeAtendimento> buscarHorariosAtendimento(String emailUsuario, LocalDate data) {
 		MedicoEntity medico = jpaMedicoRepository.findByEmail(emailUsuario);
 		
 		if(medico == null) {
@@ -87,20 +92,43 @@ public class MedicoRepository implements MedicoRepositoryPort {
 				horarios.add(inicio);
 			}
 		}
+		
+		List<GradeAtendimento> gradeAtendimento = new ArrayList<>();
+		
+		if(!horarios.isEmpty()) {
+			List<Consulta> consultasAgendadas = consultaRepository.buscarTodasConsultasPorMedicoEDia(data, medico.getId());
+			
+			
+			for (LocalTime horario : horarios) {
+				
+				Optional<Consulta> compromisso = consultasAgendadas.stream().filter( consulta -> consulta.getHorario().equals(horario)).findFirst();
+				
+				GradeAtendimento grade = new GradeAtendimento();
+				grade.setHorario(horario);
+				grade.setDescricao(compromisso.isPresent() ? compromisso.get().getPaciente().getNome() : "Horário disponível");
+				gradeAtendimento.add(grade);
+			}
+			
+		}
 
-		return horarios;
+		return gradeAtendimento;
 	}
 
 	@Override
 	public List<LocalTime> buscarHorariosDisponiveis(Long medicoId, LocalDate data) {
 		MedicoEntity medicoEntity = jpaMedicoRepository.findById(medicoId).orElseThrow(() -> new RuntimeException("Médico não encontrado"));
-		return buscarHorariosAtendimento(medicoEntity.getEmail(), data);
+		return buscarHorariosAtendimento(medicoEntity.getEmail(), data).stream().map(GradeAtendimento::getHorario).collect(Collectors.toList());
 	}
 
 	@Override
 	public List<Medico> buscarMedicosDisponiveis(LocalDate data) {
         DiaSemana diaSemanaAtual = DiaSemana.from(data.getDayOfWeek());
         return jpaMedicoRepository.findMedicosComAtendimentoNoDia(diaSemanaAtual).stream().map(MedicoMapper::toDomain).collect(Collectors.toList());
+	}
+
+	@Override
+	public Medico buscarPor(Long medicoId) {
+		return MedicoMapper.toDomain(jpaMedicoRepository.findById(medicoId).orElseThrow( () -> new RuntimeException("Médico não encontrado")));
 	}
 
 }

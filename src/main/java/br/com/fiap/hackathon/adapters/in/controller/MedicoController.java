@@ -40,7 +40,7 @@ public class MedicoController {
 	public String cadastrarAgendaMedico(@ModelAttribute Agenda agenda, Authentication authentication, Model model) {
 		model.addAttribute("usuario", authentication.getName());
 		atualizarAgendaUseCase.executar(agenda, authentication.getName());
-		model.addAttribute("horariosAtendimento", buscarHorariosAtendimentoUseCase.executar(authentication.getName(), LocalDate.now()));
+		model.addAttribute("gradeAtendimento", buscarHorariosAtendimentoUseCase.executar(authentication.getName(), LocalDate.now()));
 		return "home";
 	}
 }

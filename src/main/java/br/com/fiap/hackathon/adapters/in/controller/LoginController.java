@@ -28,7 +28,7 @@ public class LoginController {
 	@GetMapping("/")
 	public String home(Authentication authentication, Model model) {
 		model.addAttribute("usuario", authentication.getName());
-        model.addAttribute("horariosAtendimento", obterHorariosAtendimentoUseCase.executar(authentication.getName(), LocalDate.now()));
+        model.addAttribute("gradeAtendimento", obterHorariosAtendimentoUseCase.executar(authentication.getName(), LocalDate.now()));
 		return "home";
 	}
 }

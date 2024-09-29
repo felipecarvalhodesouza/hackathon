@@ -1,10 +1,10 @@
 package br.com.fiap.hackathon.application.usecases;
 
 import java.time.LocalDate;
-import java.time.LocalTime;
 import java.util.List;
 
 import br.com.fiap.hackathon.application.ports.out.MedicoRepositoryPort;
+import br.com.fiap.hackathon.domain.GradeAtendimento;
 
 public class BuscarHorariosAtendimentoUseCase {
 	
@@ -14,7 +14,7 @@ public class BuscarHorariosAtendimentoUseCase {
 		this.repository = repository;
 	}
 
-	public List<LocalTime> executar(String nomeUsuario, LocalDate data){
+	public List<GradeAtendimento> executar(String nomeUsuario, LocalDate data){
 		return repository.buscarHorariosAtendimento(nomeUsuario, data);
 	}
 

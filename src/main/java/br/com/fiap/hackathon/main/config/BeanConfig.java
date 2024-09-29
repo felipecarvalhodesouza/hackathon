@@ -15,6 +15,7 @@ import br.com.fiap.hackathon.adapters.out.repository.MedicoRepository;
 import br.com.fiap.hackathon.adapters.out.repository.UsuarioRepository;
 import br.com.fiap.hackathon.application.ports.out.AgendaRepositoryPort;
 import br.com.fiap.hackathon.application.ports.out.ConsultaRepositoryPort;
+import br.com.fiap.hackathon.application.ports.out.EnvioNotificacaoGateway;
 import br.com.fiap.hackathon.application.ports.out.MedicoRepositoryPort;
 import br.com.fiap.hackathon.application.ports.out.UsuarioRepositoryPort;
 import br.com.fiap.hackathon.application.usecases.AtualizarAgendaUseCase;
@@ -33,10 +34,15 @@ public class BeanConfig {
 	UsuarioRepositoryPort createUsuarioRepositoryPort(JpaUsuarioRepository jpaUsuarioRepository) {
 		return new UsuarioRepository(jpaUsuarioRepository);
 	}
+	
+	@Bean	
+	ConsultaRepositoryPort createConsultaRepositoryPort(JpaConsultaRepository jpaConsultaRepository, EnvioNotificacaoGateway gateway) {
+		return new ConsultaRepository(jpaConsultaRepository, gateway);
+	}
 
 	@Bean
-	MedicoRepositoryPort createMedicoRepositoryPort(JpaMedicoRepository jpaMedicoRepository) {
-		return new MedicoRepository(jpaMedicoRepository);
+	MedicoRepositoryPort createMedicoRepositoryPort(JpaMedicoRepository jpaMedicoRepository, ConsultaRepositoryPort consultaRepositoryPort) {
+		return new MedicoRepository(jpaMedicoRepository, consultaRepositoryPort);
 	}
 	
 	@Bean
@@ -44,11 +50,6 @@ public class BeanConfig {
 		return new AgendaRepository(jpaAgendaRepository);
 	}
 	
-	@Bean	
-	ConsultaRepositoryPort createConsultaRepositoryPort(JpaConsultaRepository jpaConsultaRepository) {
-		return new ConsultaRepository(jpaConsultaRepository);
-	}
-
 	@Bean
 	CadastrarPacienteUseCase createCadastrarPacienteUseCase(UsuarioRepositoryPort repository, PasswordEncoder passwordEncoder) {
 		return new CadastrarPacienteUseCase(repository, passwordEncoder);
@@ -85,8 +86,8 @@ public class BeanConfig {
 	}
 	
 	@Bean
-	CadastrarConsultaUseCase createCadastrarConsultaUseCase(ConsultaRepositoryPort repository, UsuarioRepositoryPort usuarioRepository) {
-		return new CadastrarConsultaUseCase(repository, usuarioRepository);
+	CadastrarConsultaUseCase createCadastrarConsultaUseCase(ConsultaRepositoryPort repository, UsuarioRepositoryPort usuarioRepository, MedicoRepositoryPort medicoRepository) {
+		return new CadastrarConsultaUseCase(repository, usuarioRepository, medicoRepository);
 	}
 
 	@Bean

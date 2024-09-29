@@ -14,8 +14,9 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr th:each="horario : ${horariosAtendimento}">
-						<td th:text="${horario}">08:00</td>
+					<tr th:each="grade : ${gradeAtendimento}">
+						<td th:text="${grade.horario}">08:00</td>
+						<td th:text="${grade.descricao}">Horário disponível</td>
 					</tr>
 				</tbody>
 			</table>
