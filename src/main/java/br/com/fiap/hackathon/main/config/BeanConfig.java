@@ -6,12 +6,15 @@ import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import br.com.fiap.hackathon.adapters.out.repository.AgendaRepository;
+import br.com.fiap.hackathon.adapters.out.repository.ConsultaRepository;
 import br.com.fiap.hackathon.adapters.out.repository.JpaAgendaRepository;
+import br.com.fiap.hackathon.adapters.out.repository.JpaConsultaRepository;
 import br.com.fiap.hackathon.adapters.out.repository.JpaMedicoRepository;
 import br.com.fiap.hackathon.adapters.out.repository.JpaUsuarioRepository;
 import br.com.fiap.hackathon.adapters.out.repository.MedicoRepository;
 import br.com.fiap.hackathon.adapters.out.repository.UsuarioRepository;
 import br.com.fiap.hackathon.application.ports.out.AgendaRepositoryPort;
+import br.com.fiap.hackathon.application.ports.out.ConsultaRepositoryPort;
 import br.com.fiap.hackathon.application.ports.out.MedicoRepositoryPort;
 import br.com.fiap.hackathon.application.ports.out.UsuarioRepositoryPort;
 import br.com.fiap.hackathon.application.usecases.AtualizarAgendaUseCase;
@@ -19,6 +22,7 @@ import br.com.fiap.hackathon.application.usecases.BuscarAgendaUseCase;
 import br.com.fiap.hackathon.application.usecases.BuscarHorariosAtendimentoUseCase;
 import br.com.fiap.hackathon.application.usecases.BuscarHorariosDisponiveisUseCase;
 import br.com.fiap.hackathon.application.usecases.BuscarMedicosDisponiveisUseCase;
+import br.com.fiap.hackathon.application.usecases.CadastrarConsultaUseCase;
 import br.com.fiap.hackathon.application.usecases.CadastrarMedicoUseCase;
 import br.com.fiap.hackathon.application.usecases.CadastrarPacienteUseCase;
 
@@ -38,6 +42,11 @@ public class BeanConfig {
 	@Bean
 	AgendaRepositoryPort createAgendaRepositoryPort(JpaAgendaRepository jpaAgendaRepository) {
 		return new AgendaRepository(jpaAgendaRepository);
+	}
+	
+	@Bean	
+	ConsultaRepositoryPort createConsultaRepositoryPort(JpaConsultaRepository jpaConsultaRepository) {
+		return new ConsultaRepository(jpaConsultaRepository);
 	}
 
 	@Bean
@@ -73,6 +82,11 @@ public class BeanConfig {
 	@Bean
 	BuscarMedicosDisponiveisUseCase createBuscarMedicosDisponiveisUseCase(MedicoRepositoryPort repository) {
 		return new BuscarMedicosDisponiveisUseCase(repository);
+	}
+	
+	@Bean
+	CadastrarConsultaUseCase createCadastrarConsultaUseCase(ConsultaRepositoryPort repository, UsuarioRepositoryPort usuarioRepository) {
+		return new CadastrarConsultaUseCase(repository, usuarioRepository);
 	}
 
 	@Bean

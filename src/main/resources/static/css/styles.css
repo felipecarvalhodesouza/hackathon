@@ -177,7 +177,7 @@ header h1 {
 }
 
 main {
-    margin-top: 80px; /* Ajustar para dar espaço ao header fixo */
+    margin-top: 80px;
 }
 
 .days-checkbox label,

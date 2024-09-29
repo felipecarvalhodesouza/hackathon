@@ -24,6 +24,14 @@
 		<div sec:authorize="hasAuthority('PACIENTE')">
             Este conteúdo é apenas para PACIENTES.
         </div>
-    </main>
+
+		<div id="alertModal" class="modal" th:if="${mensagem}">
+			<div class="modal-content">
+				<span class="close-button" onclick="fecharModal()">&times;</span>
+				<p th:text="${mensagem}"></p>
+			</div>
+		</div>
+
+	</main>
 </body>
 </html>

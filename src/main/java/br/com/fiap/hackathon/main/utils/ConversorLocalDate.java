@@ -12,6 +12,10 @@ public class ConversorLocalDate {
         return data.format(formatter);
 	}
 	
+	public static LocalTime getHoraLocalTime(String hora) {
+        return LocalTime.parse(hora, formatter);
+	}
+	
 	public static List<String> getHoraFormatada(List<LocalTime> datas) {
         return datas.stream().map(ConversorLocalDate::getHoraFormatada).collect(Collectors.toList());
 	}
