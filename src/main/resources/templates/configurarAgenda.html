@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Cadastro de Agenda</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/styles.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/configurarAgenda.css}">
+</head>
+<body>
+
+    <header th:replace="fragments/header :: header"></header>
+
+    <main>
+        <h1>Cadastro de Agenda</h1>
+        <form th:action="@{/configurarAgenda}" method="post" th:object="${agenda}">
+            <div class="week-container">
+                <div class="day">
+                    <label>Segunda-feira</label>
+                    <input type="radio" th:field="*{diasComPeriodos[SEGUNDA]}" value="NENHUM" th:checked="${agenda.diasComPeriodos[SEGUNDA] == T(br.com.fiap.hackathon.domain.enums.PeriodoTrabalho).NENHUM}"> Nenhum
+                    <input type="radio" th:field="*{diasComPeriodos[SEGUNDA]}" value="MANHA" th:checked="${agenda.diasComPeriodos[SEGUNDA] == T(br.com.fiap.hackathon.domain.enums.PeriodoTrabalho).MANHA}"> Manhã
+                    <input type="radio" th:field="*{diasComPeriodos[SEGUNDA]}" value="TARDE" th:checked="${agenda.diasComPeriodos[SEGUNDA] == T(br.com.fiap.hackathon.domain.enums.PeriodoTrabalho).TARDE}"> Tarde
+                    <input type="radio" th:field="*{diasComPeriodos[SEGUNDA]}" value="DIA_TODO" th:checked="${agenda.diasComPeriodos[SEGUNDA] == T(br.com.fiap.hackathon.domain.enums.PeriodoTrabalho).DIA_TODO}"> Dia Todo
+                </div>
+
+                <div class="day">
+                    <label>Terça-feira</label>
+                    <input type="radio" th:field="*{diasComPeriodos[TERCA]}" value="NENHUM" th:checked="${agenda.diasComPeriodos[TERCA] == T(br.com.fiap.hackathon.domain.enums.PeriodoTrabalho).NENHUM}"> Nenhum
+                    <input type="radio" th:field="*{diasComPeriodos[TERCA]}" value="MANHA" th:checked="${agenda.diasComPeriodos[TERCA] == T(br.com.fiap.hackathon.domain.enums.PeriodoTrabalho).MANHA}"> Manhã
+                    <input type="radio" th:field="*{diasComPeriodos[TERCA]}" value="TARDE" th:checked="${agenda.diasComPeriodos[TERCA] == T(br.com.fiap.hackathon.domain.enums.PeriodoTrabalho).TARDE}"> Tarde
+                    <input type="radio" th:field="*{diasComPeriodos[TERCA]}" value="DIA_TODO" th:checked="${agenda.diasComPeriodos[TERCA] == T(br.com.fiap.hackathon.domain.enums.PeriodoTrabalho).DIA_TODO}"> Dia Todo
+                </div>
+
+                <div class="day">
+                    <label>Quarta-feira</label>
+                    <input type="radio" th:field="*{diasComPeriodos[QUARTA]}" value="NENHUM" th:checked="${agenda.diasComPeriodos[QUARTA] == T(br.com.fiap.hackathon.domain.enums.PeriodoTrabalho).NENHUM}"> Nenhum
+                    <input type="radio" th:field="*{diasComPeriodos[QUARTA]}" value="MANHA" th:checked="${agenda.diasComPeriodos[QUARTA] == T(br.com.fiap.hackathon.domain.enums.PeriodoTrabalho).MANHA}"> Manhã
+                    <input type="radio" th:field="*{diasComPeriodos[QUARTA]}" value="TARDE" th:checked="${agenda.diasComPeriodos[QUARTA] == T(br.com.fiap.hackathon.domain.enums.PeriodoTrabalho).TARDE}"> Tarde
+                    <input type="radio" th:field="*{diasComPeriodos[QUARTA]}" value="DIA_TODO" th:checked="${agenda.diasComPeriodos[QUARTA] == T(br.com.fiap.hackathon.domain.enums.PeriodoTrabalho).DIA_TODO}"> Dia Todo
+                </div>
+
+                <div class="day">
+                    <label>Quinta-feira</label>
+                    <input type="radio" th:field="*{diasComPeriodos[QUINTA]}" value="NENHUM" th:checked="${agenda.diasComPeriodos[QUINTA] == T(br.com.fiap.hackathon.domain.enums.PeriodoTrabalho).NENHUM}"> Nenhum
+                    <input type="radio" th:field="*{diasComPeriodos[QUINTA]}" value="MANHA" th:checked="${agenda.diasComPeriodos[QUINTA] == T(br.com.fiap.hackathon.domain.enums.PeriodoTrabalho).MANHA}"> Manhã
+                    <input type="radio" th:field="*{diasComPeriodos[QUINTA]}" value="TARDE" th:checked="${agenda.diasComPeriodos[QUINTA] == T(br.com.fiap.hackathon.domain.enums.PeriodoTrabalho).TARDE}"> Tarde
+                    <input type="radio" th:field="*{diasComPeriodos[QUINTA]}" value="DIA_TODO" th:checked="${agenda.diasComPeriodos[QUINTA] == T(br.com.fiap.hackathon.domain.enums.PeriodoTrabalho).DIA_TODO}"> Dia Todo
+                </div>
+
+                <div class="day">
+                    <label>Sexta-feira</label>
+                    <input type="radio" th:field="*{diasComPeriodos[SEXTA]}" value="NENHUM" th:checked="${agenda.diasComPeriodos[SEXTA] == T(br.com.fiap.hackathon.domain.enums.PeriodoTrabalho).NENHUM}"> Nenhum
+                    <input type="radio" th:field="*{diasComPeriodos[SEXTA]}" value="MANHA" th:checked="${agenda.diasComPeriodos[SEXTA] == T(br.com.fiap.hackathon.domain.enums.PeriodoTrabalho).MANHA}"> Manhã
+                    <input type="radio" th:field="*{diasComPeriodos[SEXTA]}" value="TARDE" th:checked="${agenda.diasComPeriodos[SEXTA] == T(br.com.fiap.hackathon.domain.enums.PeriodoTrabalho).TARDE}"> Tarde
+                    <input type="radio" th:field="*{diasComPeriodos[SEXTA]}" value="DIA_TODO" th:checked="${agenda.diasComPeriodos[SEXTA] == T(br.com.fiap.hackathon.domain.enums.PeriodoTrabalho).DIA_TODO}"> Dia Todo
+                </div>
+                
+
+                <div class="day">
+                    <label>Sábado</label>
+                    <input type="radio" th:field="*{diasComPeriodos[SABADO]}" value="NENHUM" th:checked="${agenda.diasComPeriodos[SABADO] == T(br.com.fiap.hackathon.domain.enums.PeriodoTrabalho).NENHUM}"> Nenhum
+                    <input type="radio" th:field="*{diasComPeriodos[SABADO]}" value="MANHA" th:checked="${agenda.diasComPeriodos[SABADO] == T(br.com.fiap.hackathon.domain.enums.PeriodoTrabalho).MANHA}"> Manhã
+                    <input type="radio" th:field="*{diasComPeriodos[SABADO]}" value="TARDE" th:checked="${agenda.diasComPeriodos[SABADO] == T(br.com.fiap.hackathon.domain.enums.PeriodoTrabalho).TARDE}"> Tarde
+                    <input type="radio" th:field="*{diasComPeriodos[SABADO]}" value="DIA_TODO" th:checked="${agenda.diasComPeriodos[SABADO] == T(br.com.fiap.hackathon.domain.enums.PeriodoTrabalho).DIA_TODO}"> Dia Todo
+                </div>
+
+                <div class="day">
+                    <label>Domingo</label>
+                    <input type="radio" th:field="*{diasComPeriodos[DOMINGO]}" value="NENHUM" th:checked="${agenda.diasComPeriodos[DOMINGO] == T(br.com.fiap.hackathon.domain.enums.PeriodoTrabalho).NENHUM}"> Nenhum
+                    <input type="radio" th:field="*{diasComPeriodos[DOMINGO]}" value="MANHA" th:checked="${agenda.diasComPeriodos[DOMINGO] == T(br.com.fiap.hackathon.domain.enums.PeriodoTrabalho).MANHA}"> Manhã
+                    <input type="radio" th:field="*{diasComPeriodos[DOMINGO]}" value="TARDE" th:checked="${agenda.diasComPeriodos[DOMINGO] == T(br.com.fiap.hackathon.domain.enums.PeriodoTrabalho).TARDE}"> Tarde
+                    <input type="radio" th:field="*{diasComPeriodos[DOMINGO]}" value="DIA_TODO" th:checked="${agenda.diasComPeriodos[DOMINGO] == T(br.com.fiap.hackathon.domain.enums.PeriodoTrabalho).DIA_TODO}"> Dia Todo
+                </div>
+            </div>
+            <input type="submit" value="Salvar" class="save-button">
+        </form>
+
+    </main>
+
+</body>
+</html>

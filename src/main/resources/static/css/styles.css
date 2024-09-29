@@ -104,3 +104,97 @@ input[type="submit"]:hover {
     cursor: pointer; /* Muda o cursor para indicar que é clicável */
 }
 
+/* Ajuste do header */
+header {
+    width: 100%;
+    background-color: #f8f9fa;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 10px 30px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    height: 70px; /* Definir uma altura fixa para o header */
+}
+
+/* Ajustes para garantir que o conteúdo do header esteja alinhado */
+.header-content {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* Centraliza verticalmente os itens dentro do header */
+    height: 100%;
+}
+
+/* Remove margens do h1 */
+header h1 {
+    margin: 0; /* Remove a margem padrão */
+    font-size: 1.5rem; /* Ajusta o tamanho da fonte, se necessário */
+}
+
+/* Container para agrupar os botões */
+.button-container {
+    display: flex;
+    gap: 15px; /* Espaçamento entre os botões */
+    align-items: center;
+    height: 100%; /* Garante que o container dos botões ocupe a altura total do header */
+    margin-top: 10px;
+}
+
+/* Ajusta o padding dos botões */
+.agenda-button, .logout-button {
+    padding: 10px 15px; /* Ajuste do padding */
+    display: flex;
+    align-items: center; /* Alinha o conteúdo interno dos botões */
+    height: 40px; /* Altura consistente para ambos os botões */
+}
+
+.agenda-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.agenda-button:hover {
+    background-color: #0069d9;
+}
+
+.logout-button {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.logout-button:hover {
+    background-color: #c82333;
+}
+
+main {
+    margin-top: 80px; /* Ajustar para dar espaço ao header fixo */
+}
+
+.days-checkbox label,
+.periodo-checkbox label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+input[type="submit"].agenda-button {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+input[type="submit"].agenda-button:hover {
+    background-color: #218838;
+}

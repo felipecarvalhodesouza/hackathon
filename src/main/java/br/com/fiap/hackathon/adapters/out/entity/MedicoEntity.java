@@ -4,8 +4,11 @@ import java.util.Arrays;
 import java.util.List;
 
 import br.com.fiap.hackathon.domain.Role;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -16,6 +19,10 @@ public class MedicoEntity extends UsuarioEntity {
 
 	@Column(name = "cd_crm")
 	private String crm;
+	
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "agenda_id", referencedColumnName = "id")
+    private AgendaEntity agenda;
 
 	public String getCrm() {
 		return crm;
@@ -29,5 +36,13 @@ public class MedicoEntity extends UsuarioEntity {
 	public List<Role> getRoles() {
 		return Arrays.asList(Role.MEDICO);
 	}
+	
+    public AgendaEntity getAgenda() {
+        return agenda;
+    }
+
+    public void setAgenda(AgendaEntity agenda) {
+        this.agenda = agenda;
+    }
 
 }

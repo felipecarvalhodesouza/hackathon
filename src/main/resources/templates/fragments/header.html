@@ -1,0 +1,28 @@
+<!-- src/main/resources/templates/fragments/header.html -->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+    <head th:fragment="header-content">
+        <meta charset="ISO-8859-1">
+        <link rel="stylesheet" type="text/css" th:href="@{/css/styles.css}">
+    </head>
+
+    <body>
+        <header th:fragment="header-content">
+            <div class="header-content">
+                <h1>Bem vindo, <span th:text="${usuario}"></span>!</h1>
+
+                <div class="button-container">
+                    <div sec:authorize="hasAuthority('MEDICO')">
+                        <form th:action="@{/configurarAgenda}" method="get">
+                            <input type="submit" value="Configurar Agenda" class="agenda-button"/>
+                        </form>
+                    </div>
+
+                    <form th:action="@{/logout}" method="post">
+                        <input type="submit" value="Logout" class="logout-button" />
+                    </form>
+                </div>
+            </div>
+        </header>
+    </body>
+</html>

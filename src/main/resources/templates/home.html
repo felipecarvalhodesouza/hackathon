@@ -1,17 +1,29 @@
 <!DOCTYPE html>
-<html>
-<head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
-</head>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="fragments/header :: header-content"></head>
 <body>
 
-<h1>Index page access by users</h1>
+    <main>
+		<div sec:authorize="hasAuthority('MEDICO')">
+			<h1>Meus atendimentos de hoje</h1>
 
-<div sec:authorize='hasAuthority("MEDICO")'>This content is only shown
-   to MEDICOS.</div>
+			<table>
+				<thead>
+					<tr>
+						<th>Horário</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="horario : ${horariosAtendimento}">
+						<td th:text="${horario}">08:00</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
 
-<div sec:authorize='hasAuthority("PACIENTE")'>This content is only shown
-   to PACIENTES.</div>
+		<div sec:authorize="hasAuthority('PACIENTE')">
+            Este conteúdo é apenas para PACIENTES.
+        </div>
+    </main>
 </body>
 </html>
