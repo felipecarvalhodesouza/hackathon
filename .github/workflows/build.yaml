@@ -80,8 +80,11 @@ jobs:
           envsubst < ./k8s/hackathon-keys.yaml | kubectl apply -f -
 
       - name: Deploy Application
+        env:
+          EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
 
-        run: kubectl apply -f ./k8s/hackathon.yaml
+        run: |
+          envsubst < ./k8s/hackathon.yaml | kubectl apply -f -
 
       - name: Deploy Service
         run: kubectl apply -f ./k8s/hackathon-sv.yaml
