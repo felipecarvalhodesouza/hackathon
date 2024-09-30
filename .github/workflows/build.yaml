@@ -73,7 +73,11 @@ jobs:
         run: aws eks --region us-east-1 update-kubeconfig --name techchallenge
 
       - name: Deploy Keys
-        run: kubectl apply -f - ./k8s/hackathon-keys.yaml
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          DATABASE_PASSWORD: ${{ secrets.DATABASE_PASSWORD }}
+        run: |
+          envsubst < ./k8s/hackathon-keys.yaml | kubectl apply -f -
 
       - name: Deploy Application
 
