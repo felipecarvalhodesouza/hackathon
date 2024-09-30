@@ -70,7 +70,7 @@ jobs:
           aws-region: us-east-1
 
       - name: Configure kubectl
-        run: aws eks --region us-east-1 update-kubeconfig --name hackathon
+        run: aws eks --region us-east-1 update-kubeconfig --name techchallenge
 
       - name: Deploy Keys
         env:
