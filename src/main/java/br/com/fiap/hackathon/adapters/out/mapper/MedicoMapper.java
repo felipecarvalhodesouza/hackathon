@@ -4,6 +4,8 @@ import br.com.fiap.hackathon.adapters.out.entity.MedicoEntity;
 import br.com.fiap.hackathon.domain.Medico;
 
 public class MedicoMapper {
+	
+	private MedicoMapper() {}
 
 	public static Medico toDomain(MedicoEntity entity) {
 		Medico medico = new Medico();

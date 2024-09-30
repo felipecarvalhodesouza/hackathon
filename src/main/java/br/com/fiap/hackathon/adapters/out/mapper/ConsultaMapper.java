@@ -4,6 +4,8 @@ import br.com.fiap.hackathon.adapters.out.entity.ConsultaEntity;
 import br.com.fiap.hackathon.domain.Consulta;
 
 public class ConsultaMapper {
+	
+	private ConsultaMapper() {}
 
 	public static Consulta toDomain(ConsultaEntity entity) {
 		Consulta consulta = new Consulta();

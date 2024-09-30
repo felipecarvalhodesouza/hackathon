@@ -22,7 +22,7 @@ public class CadastroPacienteController {
     }
 	
 	@PostMapping
-	public String cadastrarUsuarioPaciente(@ModelAttribute("usuario") Usuario usuario, RedirectAttributes redirectAttributes) throws Exception {
+	public String cadastrarUsuarioPaciente(@ModelAttribute("usuario") Usuario usuario, RedirectAttributes redirectAttributes) {
 		cadastrarPacienteUseCase.executar(usuario);
 		
 		redirectAttributes.addFlashAttribute("mensagem", "Usuário criado com sucesso");

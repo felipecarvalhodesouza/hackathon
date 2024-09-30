@@ -47,7 +47,7 @@ public class ConsultaRepository implements ConsultaRepositoryPort{
 
 	@Override
 	public List<Consulta> buscarTodasConsultasPorMedicoEDia(LocalDate dia, Long medicoId) {
-		return jpaConsultaRepository.findAllByDiaAndMedico(dia, medicoId).stream().map(ConsultaMapper::toDomain).collect(Collectors.toList());
+		return jpaConsultaRepository.findAllByDiaAndMedico(dia, medicoId).stream().map(ConsultaMapper::toDomain).toList();
 	}
 
 	@Override

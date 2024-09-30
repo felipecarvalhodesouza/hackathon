@@ -1,5 +1,6 @@
 package br.com.fiap.hackathon.adapters.out.entity;
 
+import java.io.Serializable;
 import java.util.Map;
 
 import br.com.fiap.hackathon.adapters.out.entity.converter.DiaSemanaConverter;
@@ -22,7 +23,9 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "agenda")
-public class AgendaEntity {
+public class AgendaEntity implements Serializable {
+
+	private static final long serialVersionUID = -965979597023523723L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

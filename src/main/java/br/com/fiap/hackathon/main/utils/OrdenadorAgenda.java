@@ -10,6 +10,8 @@ import br.com.fiap.hackathon.domain.enums.DiaSemana;
 import br.com.fiap.hackathon.domain.enums.PeriodoTrabalho;
 
 public class OrdenadorAgenda {
+	
+	private OrdenadorAgenda() {}
 
 	public static Map<DiaSemana, PeriodoTrabalho> getAgendaOrdenada(Map<DiaSemana, PeriodoTrabalho> diasComPeriodos) {
 		if(diasComPeriodos == null) {

@@ -87,9 +87,8 @@ public class UsuarioEntity implements UserDetails {
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
-		String[] userRoles = getRoles().stream().map((role) -> role.getDescricao()).toArray(String[]::new);
-		Collection<GrantedAuthority> authorities = AuthorityUtils.createAuthorityList(userRoles);
-		return authorities;
+		String[] userRoles = getRoles().stream().map(Role::getDescricao).toArray(String[]::new);
+		return AuthorityUtils.createAuthorityList(userRoles);
 	}
 
 	@Override

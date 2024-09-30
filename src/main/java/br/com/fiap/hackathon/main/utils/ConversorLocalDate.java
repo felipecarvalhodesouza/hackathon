@@ -7,6 +7,9 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class ConversorLocalDate {
+	
+	private ConversorLocalDate() {}
+	
 	private static final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
 	private static final DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
@@ -19,7 +22,7 @@ public class ConversorLocalDate {
 	}
 	
 	public static List<String> getHoraFormatada(List<LocalTime> datas) {
-        return datas.stream().map(ConversorLocalDate::getHoraFormatada).collect(Collectors.toList());
+        return datas.stream().map(ConversorLocalDate::getHoraFormatada).toList();
 	}
 
 	public static String getDataFormatada(LocalDate data) {

@@ -4,6 +4,8 @@ import br.com.fiap.hackathon.adapters.out.entity.UsuarioEntity;
 import br.com.fiap.hackathon.domain.Usuario;
 
 public class UsuarioMapper {
+	
+	private UsuarioMapper() {}
 
 	public static Usuario toDomain(UsuarioEntity entity) {
 		Usuario usuario = new Usuario();

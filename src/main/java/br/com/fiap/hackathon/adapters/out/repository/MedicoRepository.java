@@ -3,6 +3,7 @@ package br.com.fiap.hackathon.adapters.out.repository;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -71,7 +72,7 @@ public class MedicoRepository implements MedicoRepositoryPort {
 		MedicoEntity medico = jpaMedicoRepository.findByEmail(emailUsuario);
 		
 		if(medico == null) {
-			return null;
+			return Collections.emptyList();
 		}
 		
 		DiaSemana diaSemana = DiaSemana.from(data.getDayOfWeek());
@@ -117,13 +118,13 @@ public class MedicoRepository implements MedicoRepositoryPort {
 	@Override
 	public List<LocalTime> buscarHorariosDisponiveis(Long medicoId, LocalDate data) {
 		MedicoEntity medicoEntity = jpaMedicoRepository.findById(medicoId).orElseThrow(() -> new RuntimeException("Médico não encontrado"));
-		return buscarHorariosAtendimento(medicoEntity.getEmail(), data).stream().map(GradeAtendimento::getHorario).collect(Collectors.toList());
+		return buscarHorariosAtendimento(medicoEntity.getEmail(), data).stream().map(GradeAtendimento::getHorario).toList();
 	}
 
 	@Override
 	public List<Medico> buscarMedicosDisponiveis(LocalDate data) {
         DiaSemana diaSemanaAtual = DiaSemana.from(data.getDayOfWeek());
-        return jpaMedicoRepository.findMedicosComAtendimentoNoDia(diaSemanaAtual).stream().map(MedicoMapper::toDomain).collect(Collectors.toList());
+        return jpaMedicoRepository.findMedicosComAtendimentoNoDia(diaSemanaAtual).stream().map(MedicoMapper::toDomain).toList();
 	}
 
 	@Override

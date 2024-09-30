@@ -15,11 +15,15 @@ import br.com.fiap.hackathon.domain.Medico;
 
 public class CustomUserDetailsService implements UserDetailsService {
 
-	@Autowired
 	UsuarioRepositoryPort repository;
 	
-	@Autowired
 	MedicoRepositoryPort medicoRepository;
+	
+	@Autowired
+	public CustomUserDetailsService(UsuarioRepositoryPort repository, MedicoRepositoryPort medicoRepository) {
+		this.repository = repository;
+		this.medicoRepository = medicoRepository;
+	}
 
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {

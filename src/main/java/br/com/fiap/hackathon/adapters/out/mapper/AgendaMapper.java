@@ -5,6 +5,8 @@ import br.com.fiap.hackathon.adapters.out.entity.MedicoEntity;
 import br.com.fiap.hackathon.domain.Agenda;
 
 public class AgendaMapper {
+	
+	private AgendaMapper() {}
 
 	public static Agenda toDomain(AgendaEntity entity) {
 		Agenda agenda = new Agenda();
