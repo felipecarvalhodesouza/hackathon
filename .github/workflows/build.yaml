@@ -60,3 +60,27 @@ jobs:
 
       - name: Push to Docker Hub
         run: docker push felipecarvalhodesouza/hackathon:latest
+
+      - name: Setup AWS Kubectl
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-session-token: ${{ secrets.AWS_SESSION_TOKEN }}
+          aws-region: us-east-1
+
+      - name: Configure kubectl
+        run: aws eks --region us-east-1 update-kubeconfig --name hackathon
+
+      - name: Deploy Keys
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          DATABASE_PASSWORD: ${{ secrets.DATABASE_PASSWORD }}
+        run: envsubst < ./k8s/hackathon-keys.yaml | kubectl apply -f -
+
+      - name: Deploy Application
+
+        run: kubectl apply -f ./k8s/hackathon.yaml
+
+      - name: Deploy Service
+        run: kubectl apply -f ./k8s/hackathon-sv.yaml
