@@ -16,7 +16,7 @@ import br.com.fiap.hackathon.domain.Consulta;
 import br.com.fiap.hackathon.domain.Medico;
 import br.com.fiap.hackathon.domain.Usuario;
 
-public class EnvioNotificacaoGatewayImpTest {
+class EnvioNotificacaoGatewayImpTest {
 
     @Mock
     private JavaMailSender mailSender;
@@ -25,12 +25,12 @@ public class EnvioNotificacaoGatewayImpTest {
     private EnvioNotificacaoGatewayImp envioNotificacaoGateway;
 
     @BeforeEach
-    public void setUp() {
+    void setUp() {
         MockitoAnnotations.openMocks(this);
     }
 
     @Test
-    public void testEnviarNotificacao() {
+    void testEnviarNotificacao() {
         Medico medico = new Medico();
         medico.setNome("Dr. John Doe");
         medico.setEmail("medico@example.com");
@@ -48,7 +48,7 @@ public class EnvioNotificacaoGatewayImpTest {
     }
 
     @Test
-    public void testEnviarNotificacaoConteudo() {
+    void testEnviarNotificacaoConteudo() {
         Medico medico = new Medico();
         medico.setNome("Dr. John Doe");
         medico.setEmail("medico@example.com");

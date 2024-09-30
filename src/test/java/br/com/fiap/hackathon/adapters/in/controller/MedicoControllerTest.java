@@ -55,7 +55,7 @@ class TestMedicoController {
 
         String result = controller.configurarAgenda(authentication, mockModel);
 
-        assertEquals(result, "configurarAgenda");
+        assertEquals("configurarAgenda", result);
 
         verify(mockModel).addAttribute("usuario", "user123");
         verify(mockModel).addAttribute("agenda", mockAgenda);
@@ -82,7 +82,7 @@ class TestMedicoController {
         verify(mockModel).addAttribute("usuario", "user123");
         verify(mockModel).addAttribute("gradeAtendimento", mockHorarios);
 
-        assertEquals(result, "home");
+        assertEquals("home", result);
     }
 }
 

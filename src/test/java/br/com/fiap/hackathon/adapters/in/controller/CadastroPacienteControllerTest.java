@@ -27,7 +27,7 @@ class CadastroPacienteControllerTest {
     }
 
     @Test
-    void testCadastrarUsuarioPacienteSuccess() throws Exception {
+    void testCadastrarUsuarioPacienteSuccess() {
         Usuario usuario = new Usuario();
 
         doNothing().when(cadastrarPacienteUseCase).executar(usuario);

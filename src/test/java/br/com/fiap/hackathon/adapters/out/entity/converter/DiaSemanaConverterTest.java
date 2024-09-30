@@ -7,17 +7,17 @@ import org.junit.jupiter.api.Test;
 
 import br.com.fiap.hackathon.domain.enums.DiaSemana;
 
-public class DiaSemanaConverterTest {
+class DiaSemanaConverterTest {
 
     private DiaSemanaConverter diaSemanaConverter;
 
     @BeforeEach
-    public void setUp() {
+    void setUp() {
         diaSemanaConverter = new DiaSemanaConverter();
     }
 
     @Test
-    public void testConvertToDatabaseColumn() {
+    void testConvertToDatabaseColumn() {
         String result = diaSemanaConverter.convertToDatabaseColumn(DiaSemana.SEGUNDA);
         assertThat(result).isEqualTo("SEGUNDA");
 
@@ -26,7 +26,7 @@ public class DiaSemanaConverterTest {
     }
 
     @Test
-    public void testConvertToEntityAttribute() {
+    void testConvertToEntityAttribute() {
         DiaSemana result = diaSemanaConverter.convertToEntityAttribute("SEGUNDA");
         assertThat(result).isEqualTo(DiaSemana.SEGUNDA);
 

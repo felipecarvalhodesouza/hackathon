@@ -15,14 +15,14 @@ import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
 
 @WebMvcTest(CadastroController.class)
-public class CadastroControllerTest {
+class CadastroControllerTest {
 
     @Autowired
     private MockMvc mockMvc;
 
     @Test
     @WithMockUser
-    public void testShowNewUsersForm() throws Exception {
+    void testShowNewUsersForm() throws Exception {
         mockMvc.perform(get("/cadastro"))
                 .andExpect(status().isOk()) 
                 .andExpect(view().name("cadastro"))

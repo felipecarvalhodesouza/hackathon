@@ -84,7 +84,7 @@ class ConsultaControllerTest {
 
         verify(mockModel).addAttribute("mensagem", "Consulta agendada com sucesso!");
 
-        assertEquals(result, "home");
+        assertEquals("home", result);
     }
 
     @Test
@@ -105,6 +105,6 @@ class ConsultaControllerTest {
 
         verify(mockModel).addAttribute("mensagem", "Horário indisponível");
 
-        assertEquals(result, "home");
+        assertEquals("home", result);
     }
 }

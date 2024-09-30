@@ -2,7 +2,6 @@ package br.com.fiap.hackathon.application.usecases;
 
 import java.time.LocalDate;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import br.com.fiap.hackathon.application.ports.out.ConsultaRepositoryPort;
 import br.com.fiap.hackathon.application.ports.out.MedicoRepositoryPort;
@@ -25,7 +24,7 @@ public class BuscarHorariosDisponiveisUseCase {
 		List<Consulta> buscarTodasConsultasPorMedicoEDia = consultaRepository.buscarTodasConsultasPorMedicoEDia(data, medicoId);
 		
 		for (Consulta consulta : buscarTodasConsultasPorMedicoEDia) {
-			horaFormatada = horaFormatada.stream().filter(hora -> !ConversorLocalDate.getHoraFormatada(consulta.getHorario()).equals(hora)).collect(Collectors.toList());
+			horaFormatada = horaFormatada.stream().filter(hora -> !ConversorLocalDate.getHoraFormatada(consulta.getHorario()).equals(hora)).toList();
 		}
 		
 		return horaFormatada;
