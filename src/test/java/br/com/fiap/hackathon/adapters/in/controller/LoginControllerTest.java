@@ -39,7 +39,7 @@ class TestLoginController {
 	@Test
 	void test_login() {
 		String result = controller.login();
-		assertEquals(result, "login");
+		assertEquals("login", result);
 	}
 
 	@Test
@@ -57,7 +57,7 @@ class TestLoginController {
 
 		String result = controller.home(authentication, mockModel);
 
-		assertEquals(result, "home");
+		assertEquals("home", result);
 
 		verify(mockModel).addAttribute("usuario", "user123");
 		verify(mockModel).addAttribute("gradeAtendimento", mockHorarios);

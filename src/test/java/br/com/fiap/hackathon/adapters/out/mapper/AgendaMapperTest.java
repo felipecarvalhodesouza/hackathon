@@ -13,10 +13,10 @@ import br.com.fiap.hackathon.domain.Agenda;
 import br.com.fiap.hackathon.domain.enums.DiaSemana;
 import br.com.fiap.hackathon.domain.enums.PeriodoTrabalho;
 
-public class AgendaMapperTest {
+class AgendaMapperTest {
 
 	@Test
-	public void testToDomain() {
+	void testToDomain() {
 		AgendaEntity entity = new AgendaEntity();
 		entity.setId(1L);
 		MedicoEntity medicoEntity = new MedicoEntity();
@@ -35,7 +35,7 @@ public class AgendaMapperTest {
 	}
 
 	@Test
-	public void testToEntity() {
+	void testToEntity() {
 		Agenda agenda = new Agenda();
 		agenda.setId(1L);
 		agenda.setMedicoId(2L);

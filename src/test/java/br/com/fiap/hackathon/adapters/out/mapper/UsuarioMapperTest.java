@@ -10,7 +10,7 @@ import br.com.fiap.hackathon.domain.Usuario;
 class UsuarioMapperTest {
 
 	@Test
-	public void testToDomain() {
+	void testToDomain() {
 		UsuarioEntity entity = new UsuarioEntity();
 		entity.setId(1L);
 		entity.setNome("Carlos Silva");
@@ -28,7 +28,7 @@ class UsuarioMapperTest {
 	}
 
 	@Test
-	public void testToEntity() {
+	void testToEntity() {
 		Usuario usuario = new Usuario();
 		usuario.setId(1L);
 		usuario.setNome("Carlos Silva");

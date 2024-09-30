@@ -17,7 +17,7 @@ import br.com.fiap.hackathon.main.utils.ConversorLocalDate;
 class ConsultaMapperTest {
 
 	@Test
-	public void testToDomain() {
+	void testToDomain() {
 		MedicoEntity medicoMock = new MedicoEntity();
 		medicoMock.setId(1l);
 		UsuarioEntity usuarioMock = new UsuarioEntity();
@@ -40,7 +40,7 @@ class ConsultaMapperTest {
 	}
 
 	@Test
-	public void testToEntity() {
+	void testToEntity() {
 		Medico medicoMock = new Medico();
 		medicoMock.setId(1l);
 		Usuario usuarioMock = new Usuario();

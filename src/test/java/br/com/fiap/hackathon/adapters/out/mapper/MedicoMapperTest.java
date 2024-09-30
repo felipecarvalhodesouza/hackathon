@@ -10,7 +10,7 @@ import br.com.fiap.hackathon.domain.Medico;
 class MedicoMapperTest {
 
 	@Test
-	public void testToDomain() {
+	void testToDomain() {
 		MedicoEntity entity = new MedicoEntity();
 		entity.setId(1L);
 		entity.setNome("Dr. João");
@@ -30,7 +30,7 @@ class MedicoMapperTest {
 	}
 
 	@Test
-	public void testToEntity() {
+	void testToEntity() {
 		Medico medico = new Medico();
 		medico.setId(1L);
 		medico.setNome("Dr. João");
