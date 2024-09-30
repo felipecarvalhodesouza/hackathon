@@ -76,7 +76,7 @@ jobs:
         env:
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
           DATABASE_PASSWORD: ${{ secrets.DATABASE_PASSWORD }}
-        run: envsubst < ./k8s/hackathon-keys.yaml | kubectl apply -f -
+        run: cat ./k8s/hackathon-keys.yaml | envsubst | kubectl apply -f -
 
       - name: Deploy Application
 
