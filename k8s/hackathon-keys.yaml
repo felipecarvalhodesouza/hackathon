@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mysql-db-core-config
+data:
+  DATABASE_URL: ${DATABASE_URL}
+  MYSQL_DATABASE: hackathon
+  DATABASE_PASSWORD: ${DATABASE_PASSWORD}
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: mysql-db-core-secret
+type: Opaque
+data:
+  DATABASE_USERNAME: YWRtaW4=
+  DATABASE_PASSWORD: WXZuWDRuSmpydE9XN3Z5Uk5MZlVl
