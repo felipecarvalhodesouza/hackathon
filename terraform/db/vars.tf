@@ -7,15 +7,15 @@ variable "projectName" {
 }
 
 variable "subnetA" {
-  default = "subnet-0374755baa9cebff6"
+  default = "subnet-08aa091e641814f16"
 }
 
 variable "subnetB" {
-  default = "subnet-0d72e0f0d4341e82e"
+  default = "subnet-07a65ddaafe2d1e1f"
 }
 
 variable "subnetC" {
-  default = "subnet-0d934e88a532a316e"
+  default = "subnet-035d9cbe14aeb0fa2"
 }
 
 variable "AWS_ACCESS_KEY_ID" {

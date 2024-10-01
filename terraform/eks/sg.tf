@@ -1,6 +1,6 @@
 resource "aws_security_group" "sg" {
   name        = "SG-${var.projectName}"
-  description = "Grupo do techchallenge"
+  description = "Grupo do hackathon"
   vpc_id      = var.vpcId
 
   ingress {
