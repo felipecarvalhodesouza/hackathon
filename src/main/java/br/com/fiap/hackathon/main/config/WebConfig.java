@@ -19,7 +19,7 @@ public class WebConfig {
 
 	@Bean
 	public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
-		httpSecurity.
+		httpSecurity.csrf().disable().
 					authorizeHttpRequests(request -> 
 						request.requestMatchers("/compromissos")
 							.hasAuthority("MEDICO")
