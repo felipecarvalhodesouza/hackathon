@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import br.com.fiap.hackathon.application.usecases.BuscarHorariosDisponiveisUseCase;
 import br.com.fiap.hackathon.application.usecases.BuscarMedicosDisponiveisUseCase;
@@ -53,6 +54,7 @@ public class ConsultaController {
     }
 
 	@GetMapping("/horariosDisponiveis/{medicoId}")
+	@ResponseBody
 	public List<String> buscarHorariosDisponiveis(@PathVariable Long medicoId) {
 		return buscarHorariosDisponiveisUseCase.buscarHorariosDisponiveis(medicoId, LocalDate.now());
 	}
