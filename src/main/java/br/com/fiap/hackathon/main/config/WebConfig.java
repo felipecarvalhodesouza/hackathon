@@ -25,7 +25,7 @@ public class WebConfig {
 							.hasAuthority("MEDICO")
 						.requestMatchers("/home")
 							.hasAuthority("PACIENTE")
-							.requestMatchers("/cadastro", "/cadastro/paciente", "/cadastro/medico", "/login", "/error", "/css/**", "/js/**")
+							.requestMatchers("/cadastro", "/cadastro/paciente", "/cadastro/medico", "/login", "/error", "/css/**", "/js/**", "/swagger-ui/**")
 							.permitAll()
 						
 						.anyRequest().authenticated())
