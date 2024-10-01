@@ -10,21 +10,21 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import br.com.fiap.hackathon.application.ports.out.MedicoRepositoryPort;
 import br.com.fiap.hackathon.domain.Medico;
 
-public class CadastrarMedicoUseCaseTest {
+class CadastrarMedicoUseCaseTest {
 
     private MedicoRepositoryPort medicoRepository;
     private PasswordEncoder passwordEncoder;
     private CadastrarMedicoUseCase cadastrarMedicoUseCase;
 
     @BeforeEach
-    public void setUp() {
+    void setUp() {
         medicoRepository = mock(MedicoRepositoryPort.class);
         passwordEncoder = mock(PasswordEncoder.class);
         cadastrarMedicoUseCase = new CadastrarMedicoUseCase(medicoRepository, passwordEncoder);
     }
 
     @Test
-    public void testCadastrarMedico_Sucesso() {
+    void testCadastrarMedico_Sucesso() {
         Medico medico = new Medico();
         medico.setNome("Dr. João");
         medico.setSenha("senhaSecreta");

@@ -13,19 +13,19 @@ import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.List;
 
-public class BuscarHorariosAtendimentoUseCaseTest {
+class BuscarHorariosAtendimentoUseCaseTest {
 
     private MedicoRepositoryPort repository;
     private BuscarHorariosAtendimentoUseCase buscarHorariosAtendimentoUseCase;
 
     @BeforeEach
-    public void setUp() {
+    void setUp() {
         repository = mock(MedicoRepositoryPort.class);
         buscarHorariosAtendimentoUseCase = new BuscarHorariosAtendimentoUseCase(repository);
     }
 
     @Test
-    public void testExecutarChamaBuscarHorariosAtendimento() {
+    void testExecutarChamaBuscarHorariosAtendimento() {
         String nomeUsuario = "medico@example.com";
         LocalDate data = LocalDate.now();
         List<GradeAtendimento> horariosEsperados = Arrays.asList(new GradeAtendimento(), new GradeAtendimento());

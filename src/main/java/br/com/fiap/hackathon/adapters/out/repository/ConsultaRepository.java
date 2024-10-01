@@ -38,7 +38,6 @@ public class ConsultaRepository implements ConsultaRepositoryPort{
 			notificacaoGateway.enviarNotificacao(ConsultaMapper.toDomain(entity));
 			return ConsultaMapper.toDomain(entity);
 		} catch(Exception exception) {
-			exception.printStackTrace();
 			throw new HorarioIndisponivelException("Horário não está mais disponível para atendimento");
 		}
 		

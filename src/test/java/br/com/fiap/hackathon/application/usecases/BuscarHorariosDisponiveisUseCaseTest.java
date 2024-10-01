@@ -17,21 +17,21 @@ import br.com.fiap.hackathon.application.ports.out.ConsultaRepositoryPort;
 import br.com.fiap.hackathon.application.ports.out.MedicoRepositoryPort;
 import br.com.fiap.hackathon.domain.Consulta;
 
-public class BuscarHorariosDisponiveisUseCaseTest {
+class BuscarHorariosDisponiveisUseCaseTest {
 
     private MedicoRepositoryPort medicoRepository;
     private ConsultaRepositoryPort consultaRepository;
     private BuscarHorariosDisponiveisUseCase buscarHorariosDisponiveisUseCase;
 
     @BeforeEach
-    public void setUp() {
+    void setUp() {
         medicoRepository = mock(MedicoRepositoryPort.class);
         consultaRepository = mock(ConsultaRepositoryPort.class);
         buscarHorariosDisponiveisUseCase = new BuscarHorariosDisponiveisUseCase(medicoRepository, consultaRepository);
     }
 
     @Test
-    public void testBuscarHorariosDisponiveis_SemConsultas() {
+    void testBuscarHorariosDisponiveis_SemConsultas() {
         Long medicoId = 1L;
         LocalDate data = LocalDate.of(2024, 9, 30);
         List<LocalTime> horariosDisponiveis = List.of(
@@ -50,7 +50,7 @@ public class BuscarHorariosDisponiveisUseCaseTest {
     }
 
     @Test
-    public void testBuscarHorariosDisponiveis_ComConsultasAgendadas() {
+    void testBuscarHorariosDisponiveis_ComConsultasAgendadas() {
         Long medicoId = 1L;
         LocalDate data = LocalDate.of(2024, 9, 30);
         List<LocalTime> horariosDisponiveis = List.of(
@@ -79,7 +79,7 @@ public class BuscarHorariosDisponiveisUseCaseTest {
     }
 
     @Test
-    public void testBuscarHorariosDisponiveis_TodasConsultasAgendadas() {
+    void testBuscarHorariosDisponiveis_TodasConsultasAgendadas() {
         Long medicoId = 1L;
         LocalDate data = LocalDate.of(2024, 9, 30);
         List<LocalTime> horariosDisponiveis = List.of(

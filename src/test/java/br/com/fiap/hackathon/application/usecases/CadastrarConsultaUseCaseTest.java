@@ -22,7 +22,7 @@ import br.com.fiap.hackathon.domain.Medico;
 import br.com.fiap.hackathon.domain.Usuario;
 import br.com.fiap.hackathon.domain.exception.HorarioIndisponivelException;
 
-public class CadastrarConsultaUseCaseTest {
+class CadastrarConsultaUseCaseTest {
 
     private ConsultaRepositoryPort consultaRepository;
     private UsuarioRepositoryPort usuarioRepository;

@@ -10,21 +10,21 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import br.com.fiap.hackathon.application.ports.out.UsuarioRepositoryPort;
 import br.com.fiap.hackathon.domain.Usuario;
 
-public class CadastrarPacienteUseCaseTest {
+class CadastrarPacienteUseCaseTest {
 
     private UsuarioRepositoryPort usuarioRepository;
     private PasswordEncoder passwordEncoder;
     private CadastrarPacienteUseCase cadastrarPacienteUseCase;
 
     @BeforeEach
-    public void setUp() {
+    void setUp() {
         usuarioRepository = mock(UsuarioRepositoryPort.class);
         passwordEncoder = mock(PasswordEncoder.class);
         cadastrarPacienteUseCase = new CadastrarPacienteUseCase(usuarioRepository, passwordEncoder);
     }
 
     @Test
-    public void testCadastrarPaciente_Sucesso() {
+    void testCadastrarPaciente_Sucesso() {
         Usuario usuario = new Usuario();
         usuario.setNome("João da Silva");
         usuario.setSenha("senhaSecreta");

@@ -34,7 +34,7 @@ import br.com.fiap.hackathon.domain.Usuario;
 import br.com.fiap.hackathon.domain.enums.DiaSemana;
 import br.com.fiap.hackathon.domain.enums.PeriodoTrabalho;
 
-public class MedicoRepositoryTest {
+class MedicoRepositoryTest {
 
     @Mock
     private JpaMedicoRepository jpaMedicoRepository;

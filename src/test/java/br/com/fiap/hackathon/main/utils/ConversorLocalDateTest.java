@@ -10,7 +10,7 @@ import java.util.List;
 
 import org.junit.jupiter.api.Test;
 
-public class ConversorLocalDateTest {
+class ConversorLocalDateTest {
 
 	@Test
 	void testGetHoraFormatada_ValidTime() {

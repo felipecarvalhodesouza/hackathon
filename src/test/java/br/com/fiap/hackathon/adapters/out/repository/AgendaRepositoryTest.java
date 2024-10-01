@@ -21,7 +21,7 @@ import br.com.fiap.hackathon.domain.Agenda;
 import br.com.fiap.hackathon.domain.enums.DiaSemana;
 import br.com.fiap.hackathon.domain.enums.PeriodoTrabalho;
 
-public class AgendaRepositoryTest {
+class AgendaRepositoryTest {
 
     @Mock
     private JpaAgendaRepository jpaAgendaRepository;
